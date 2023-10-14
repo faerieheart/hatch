@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    private final int STAGE_HEIGHT;
-    private final int STAGE_WIDTH;
+    private final int STAGE_HEIGHT = 400;
+    private final int STAGE_WIDTH = 800;
 
     private Scene startScene;
     private Scene gameScene;
@@ -24,26 +24,29 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         stage.setTitle("Start Screen");
-        
-        HatchScene start = new HatchScene(0, STAGE_WIDTH, STAGE_HEIGHT);
-        stage.setScene(start.getScene());
+        startScene(stage);
+    }
+
+    public void startScene(Stage stage) {
+        /*
         Button btn = new Button();
-        btn.setText("Start Game");
+        btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
  
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("next scene");
-                switchScene(stage);
+                gameStart(stage);
             }
         });
+        */
+        StackPane root = new StackPane();
+        //root.getChildren().add(btn);
+        stage.setScene(new Scene(root, STAGE_WIDTH, STAGE_HEIGHT));
         stage.show();
     }
 
-    public void startScene(Stage stage, ) {
-        Group root = new Group();
-        stage.setScene(new Scene(root, STAGE_WIDTH, STAGE_HEIGHT));
-        stage.show();
+    public void gameStart(Stage stage) {
     }
     
 }

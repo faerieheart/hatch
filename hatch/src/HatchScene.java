@@ -1,19 +1,25 @@
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class HatchScene {
 
     int id;
     private StackPane root;
     private Scene scene;
+    private Stage stage;
+    private int width;
+    private int height;
+    private GameScene game;
     
-    public HatchScene(int id, int width, int height) {
+    public HatchScene(int id, Stage stage, int width, int height) {
         this.id = id;
+        this.width = width;
+        this.height = height;
+
         if (id == 0) {
             startScene();
         } else if (id == 1) {
@@ -24,6 +30,8 @@ public class HatchScene {
             endScene();
         }
         this.scene = new Scene(root, width, height);
+        stage.setScene(this.scene);
+        stage.show();
     }
 
     private void endScene() {
@@ -35,7 +43,8 @@ public class HatchScene {
     }
 
     private void gameScene() {
-        this.root = new StackPane();
+        this.game = new GameScene(id, stage, width, height);
+        this.root = game.getRoot();
     }
 
     private void startScene() {
@@ -46,7 +55,7 @@ public class HatchScene {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("next scene");
-                switchScene();
+                switchScene(stage, 1);
             }
         });
         this.root = new StackPane();
@@ -56,4 +65,25 @@ public class HatchScene {
     public Scene getScene() {
         return this.scene;
     }
+
+    public StackPane getRoot() {
+        return this.root;
+    }
+
+    private void switchScene(Stage stage, int id) {
+        this.id = id;
+        if (id == 0) {
+            startScene();
+        } else if (id == 1) {
+            gameScene();
+        } else if (id == 2) {
+            settingScene();
+        } else if (id == 3) {
+            endScene();
+        }
+        this.scene = new Scene(root, this.width, this.height);
+        stage.setScene(this.scene);
+        stage.show();
+    }
+
 }
