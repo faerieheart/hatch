@@ -1,0 +1,255 @@
+﻿id: 1
+words: [XXXXX]: I... I don't really want to be a boy I think. Would my friends care if I made this trainer a girl?
+speaking: F
+choice: F
+charOnLeft: T
+id: 2
+words: [XXXXX]: Hmmm. Should I be a [1] boy or a [2] girl?
+speaking: F
+choice: T
+charOnLeft: T
+id: 3
+words: Jaxon: Yo did y'all see Eric today? That kid was totallyyy wearing eyeliner today.
+speaking: T
+choice: F
+charOnLeft: F
+id: 4
+words: Ayush: Hahaha dude the whole school knows he's a homo lol.
+speaking: T
+choice: F
+charOnLeft: F
+id: 5
+words: [XXXXX]: Damn that was harsh. Should I [1] defend him, or [2] change the subject? Or I guess they'd want me to [3] join in, I could do that.
+speaking: F
+choice: T
+charOnLeft: T
+id: 6
+words: [XXXXX]: Y'all he's just a freshman, cut it out.
+speaking: T
+choice: F
+charOnLeft: T
+id: 7
+words: [XXXXX]: Guys the history tests got posted! Check Canvas.
+speaking: T
+choice: F
+charOnLeft: T
+id: 8
+words: [XXXXX]: Yeah, does he wanna be a girl of something? Ew.
+speaking: T
+choice: F
+charOnLeft: T
+id: 9
+words: Jaxon: Hear that? Next thing we know [XXXXX]'s going to be wearing it too haha.
+speaking: T
+choice: F
+charOnLeft: F
+id: 10
+words: Ayush: Oh shoot! I bombed that, my parents are going to be so mad.
+speaking: T
+choice: F
+charOnLeft: F
+id: 11
+words: Jaxon: Lol good one bro, that's so gross.
+speaking: T
+choice: F
+charOnLeft: T
+id: 12
+words: Ayush: Bro Jax my Zekoram's so good, you're gonna lose man!
+speaking: T
+choice: F
+charOnLeft: F
+id: 13
+words: Jaxon: Nah 'cause my Reshiram's special attack is maxed out, you're toast.
+speaking: T
+choice: F
+charOnLeft: F
+id: 14
+words: Ayush: Not as toast as your Georgia Tech app, can't believe you let read something so bad.
+speaking: T
+choice: F
+charOnLeft: F
+id: 15
+words: Jaxon: Ah cut it out. Hey! There's [XXXXX], you wanna play Pokemans with us?
+speaking: T
+choice: F
+charOnLeft: F
+id: 16
+words: [XXXXX]: Ah shoot, what if they make fun of my girl trainer? I could [1] say no I guess... or maybe [2] I'll play, it can't go that bad.
+speaking: F
+choice: T
+charOnLeft: T
+id: 17
+words: [XXXXX]: Yeah sure! I'll play.
+speaking: T
+choice: F
+charOnLeft: T
+id: 18
+words: [XXXXX]: I'll pass, not really into Pokemon these day's honestly.
+speaking: T
+choice: F
+charOnLeft: T
+id: 19
+words: Ayush: Yo, wait, your character's the girl trainer, what's up with that? You gay like Eric?
+speaking: T
+choice: F
+charOnLeft: F
+id: 20
+words: Ayush: Damn ok, I see how it is.
+speaking: T
+choice: F
+charOnLeft: F
+id: 21
+words: [XXXXX]: Alright yeah I'll hop on, but I just started this playthrough, I'm not that good.
+speaking: T
+choice: F
+charOnLeft: T
+id: 22
+words: [XXXXX]: Damn I kinda wish I picked the girl, I wish people would be ok with that.
+speaking: F
+choice: F
+charOnLeft: T
+id: 23
+words: Counselor: Hi [XXXXX]! How are things, how's the college application process going?
+speaking: T
+choice: F
+charOnLeft: F
+id: 24
+words: [XXXXX]: Ah, it's a bit stressful honestly. Been thinking a lot about where I want to go and what kind of social life I'll have.
+speaking: T
+choice: F
+charOnLeft: T
+id: 25
+words: Counselor: That's a valid concern! We don't have a ton of time, so we can only review one application. What's your top college?
+speaking: T
+choice: F
+charOnLeft: F
+id: 26
+words: [XXXXX]: Huh, I could polish my application for [1] that good state school, or... maybe I could ask about [3] that liberal arts college farther off. People might be nicer there.
+speaking: F
+choice: T
+charOnLeft: T
+id: 27
+words: [XXXXX]: Yeah I'm thinking about going to NC State! They've got really good academics, and all my friends will be there.    
+speaking: T
+choice: F
+charOnLeft: T
+id: 28
+words: [XXXXX]: Yeah I'm thinking about going to Emory, I've heard they've got a great culture there.
+speaking: T
+choice: F
+charOnLeft: T
+id: 29
+words: Counselor: That's a great pick! Here, let me see your essays so far...
+speaking: T
+choice: F
+charOnLeft: F
+id: 30
+words: Mama: Hey kiddo, how was that meeting with the counselors? You polished your State application properly?
+speaking: T
+choice: F
+charOnLeft: F
+id: 31
+words: [XXXXX]: Yeah yeah... I worked on it with them.
+speaking: T
+choice: F
+charOnLeft: T
+id: 32
+words: Papa: That's good! I'm glad you're keeping studies in mind. By the way, your hair is quite long now, we should get it cut.  
+speaking: T
+choice: F
+charOnLeft: F
+id: 33
+words: [XXXXX]: Aw shoot, I really wanted to grow it out, and if I cut it I'll look like such a dude-bro. Ahhh, should I [1] argue it out, or [2] give in?
+speaking: F
+choice: T
+charOnLeft: T
+id: 34
+words: [XXXXX]: I actually want to grow it out this year! I've never gotten to do that before.
+speaking: T
+choice: F
+charOnLeft: T
+id: 35
+words: [XXXXX]: Yeah... I guess we can cut it.
+speaking: T
+choice: F
+charOnLeft: T
+id: 36
+words: Mama: Great, I'll schedule you for a cut at GreatClips for later this month.
+speaking: T
+choice: F
+charOnLeft: F
+id: 37
+words: Mama: Oh come on, it looks childish, you want to look good for those college interviews right?
+speaking: T
+choice: F
+charOnLeft: F
+id: 38
+words: [XXXXX]: Oh this isn't going to be easy. I could [1] keep pushing for it, or [2] give up now so she's not super mad.            
+speaking: F
+choice: T
+charOnLeft: T
+id: 39
+words: [XXXXX]: I said I want to keep it short! Besides, I'm almost about to go to college, I should get to make my own decisions.
+speaking: T
+choice: F
+charOnLeft: T
+id: 40
+words: Mama: Fine. I mean what will people even think? It doesn't look good.
+speaking: T
+choice: F
+charOnLeft: F
+id: 41
+words: [XXXXX]: Ooh this seems cool! Maybe I should go, I don't really know anything about LGBT people and... I think I might be one?
+speaking: F
+choice: F
+charOnLeft: T
+id: 42
+words: [Jaxon]: Yo [XXXXX]! What's up? There's a sportsball game this weekend, you coming? You're not afraid of the ball are you lol?
+speaking: T
+choice: F
+charOnLeft: F
+id: 43
+words: [XXXXX]: That's gonna conflict with the GSA meeting! Huh, should I [1] skip the game or [2] finally go to one?
+speaking: F
+choice: T
+charOnLeft: T
+id: 44
+words: [XXXXX]: Ah man, I've got something else planned! Maybe next time y'know?
+speaking: T
+choice: F
+charOnLeft: T
+id: 45
+words: [XXXXX]: Bro I'm not afraid! Yeah I'm coming don't even worry.
+speaking: T
+choice: F
+charOnLeft: T
+id: 46
+words: [Jaxon]: Nice! I'll see you there.
+speaking: T
+choice: F
+charOnLeft: F
+id: 47
+words: [Jaxon]: Damn again? Man you really love flaking huh?
+speaking: T
+choice: F
+charOnLeft: F
+id: 48
+words: [XXXXX]: Ugh, I wish I went to that GSA meeting, this isn't any fun.
+speaking: F
+choice: F
+charOnLeft: T
+id: 49
+words: El: Hey! My name's El, I don't think I've seen you before, what's up?
+speaking: T
+choice: F
+charOnLeft: F
+id: 50
+words: [XXXXX]: Wow the people here are nice!
+speaking: F
+choice: F
+charOnLeft: T
+id: 51
+words: THE END (for now!)
+speaking: F
+choice: F
+charOnLeft: F
