@@ -64,7 +64,7 @@ speaking: T
 choice: F
 charOnLeft: F
 id: 14
-words: Ayush: Not as toast as your Georgia Tech app, can't believe you let read something so bad.
+words: Ayush: Not as toast as your Georgia Tech app, can't believe you let me read something so bad.
 speaking: T
 choice: F
 charOnLeft: F
@@ -78,12 +78,12 @@ words: [XXXXX]: Ah shoot, what if they make fun of my girl trainer? I could [1] 
 speaking: F
 choice: T
 charOnLeft: T
-id: 17
+id: 18
 words: [XXXXX]: Yeah sure! I'll play.
 speaking: T
 choice: F
 charOnLeft: T
-id: 18
+id: 17
 words: [XXXXX]: I'll pass, not really into Pokemon these day's honestly.
 speaking: T
 choice: F
@@ -124,7 +124,7 @@ speaking: T
 choice: F
 charOnLeft: F
 id: 26
-words: [XXXXX]: Huh, I could polish my application for [1] that good state school, or... maybe I could ask about [3] that liberal arts college farther off. People might be nicer there.
+words: [XXXXX]: Huh, I could polish my application for [1] that good state school, or... maybe I could ask about [2] that liberal arts college farther off. People might be nicer there.
 speaking: F
 choice: T
 charOnLeft: T

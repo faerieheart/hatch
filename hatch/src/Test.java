@@ -21,6 +21,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javafx.util.Duration;
 
@@ -99,6 +102,7 @@ public class Test extends Application {
         }
         */
 
+        /*
         FileInputStream input;
         try {
             input = new FileInputStream("hatch/src/egg.png");
@@ -119,6 +123,43 @@ public class Test extends Application {
             e.printStackTrace();
         }
         stage.show();
+        */
+
+        ImageView imageView = new ImageView();
+        List<Image> images = new ArrayList<>();
+        try {
+            FileInputStream in1 = new FileInputStream("hatch/src/egg1.png");
+            FileInputStream in2 = new FileInputStream("hatch/src/egg2.png");
+            FileInputStream in3 = new FileInputStream("hatch/src/egg3.png");
+            images.add(new Image(in1));
+            images.add(new Image(in2));
+            images.add(new Image(in3));
+
+
+            Timeline time = new Timeline(
+                new KeyFrame(Duration.ZERO, e -> imageView.setImage(images.get(0))),
+                new KeyFrame(Duration.seconds(0.5), e -> imageView.setImage(images.get(1))),
+                new KeyFrame(Duration.seconds(1), e -> imageView.setImage(images.get(2))),
+                new KeyFrame(Duration.seconds(1.5), e -> imageView.setImage(images.get(2)))
+            );
+
+            time.setCycleCount(1);
+            time.play();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        imageView.setFitWidth(App.STAGE_HEIGHT * 0.75);
+        imageView.setFitHeight(App.STAGE_HEIGHT);
+        StackPane layout = new StackPane(imageView);
+        layout.setMaxSize(App.STAGE_WIDTH, App.STAGE_HEIGHT);
+        layout.setMinSize(App.STAGE_WIDTH, App.STAGE_HEIGHT);
+
+        Scene scene2 = new Scene(layout);
+        stage.setScene(scene2);
+        stage.show();
+
     }
 
     private void animateUsingTimeline(ImageView heart) {

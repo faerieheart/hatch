@@ -1,12 +1,12 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -91,6 +92,16 @@ public class GameScene {
     }
 
     private void createScenePointerArr(String scenePointersStr) {
+        if (this.id == 15 && App.girlChar) {
+            this.scenePointers = new int[1];
+            this.scenePointers[0] = 16;
+            return;
+        } else if (this.id == 15) {
+            this.scenePointers = new int[1];
+            this.scenePointers[0] = 21;
+            return;
+        }
+
         String[] scenePointStrArr = scenePointersStr.split(", ");
         this.scenePointers = new int[scenePointStrArr.length];
 
@@ -102,7 +113,6 @@ public class GameScene {
     private void readFromTextFile() {
         File file = new File("hatch/src/Text.txt");
         Scanner sc;
-        String scenePointStr;
         try {
             sc = new Scanner(file);
             int i = 1;
@@ -156,19 +166,23 @@ public class GameScene {
 
     public void drawScene(Stage stage) {
         drawBackground();
-        drawBarometers();
-        drawBox();
-        drawText();
+        if (this.id != 51) {
+            drawBarometers();
+            drawBox();
+            drawText();
+        }
 
-        if (id == 15) {
+        if (textChoice) {
             this.scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-                if (key.getCode() == KeyCode.DIGIT1) {
+                if (key.getCode() == KeyCode.DIGIT1 && this.id == 2) {
                     nextScene(this.scenePointers[0]);
-                }
-            });
-        } else if (textChoice) {
-            this.scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-                if (key.getCode() == KeyCode.DIGIT1) {
+                    App.girlChar = false;
+                    App.baromVals[0] -= 10;
+                } else if (key.getCode() == KeyCode.DIGIT2 && this.id == 2) {
+                    nextScene(this.scenePointers[0]);
+                    App.girlChar = true;
+                    App.baromVals[0] += 10;
+                } else if (key.getCode() == KeyCode.DIGIT1) {
                     nextScene(this.scenePointers[0]);
                 } else if (key.getCode() == KeyCode.DIGIT2) {
                     nextScene(this.scenePointers[1]);
@@ -181,10 +195,10 @@ public class GameScene {
             });
         } else {
             this.scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-                if (key.getCode() == KeyCode.DIGIT1) {
+                if (key.getCode() == KeyCode.ENTER) {
                     nextScene(this.scenePointers[0]);
                 }
-        });
+            });
         }
 
         this.stage.setScene(this.scene);
@@ -192,50 +206,54 @@ public class GameScene {
     }
 
     public void nextScene(int newId) {
+        checkNewId(newId);
         if (newId == 0) {
             System.exit(0);
         }
         if (endOfSection) {
-            FileInputStream input;
-            try {
-                input = new FileInputStream("hatch/src/egg.png");
-                Image img = new Image(input);
-                ImageView heart = new ImageView(img);
-                heart.setFitWidth(App.STAGE_HEIGHT * 0.75);
-                heart.setFitHeight(App.STAGE_HEIGHT);
+            ImageView imageView = new ImageView();
+            animateUsingTimeline(imageView, newId);
 
-                animateUsingTimeline(heart, newId);
+            imageView.setFitWidth(App.STAGE_WIDTH);
+            imageView.setFitHeight(App.STAGE_HEIGHT);
+            StackPane layout = new StackPane(imageView);
+            layout.setMaxSize(App.STAGE_WIDTH, App.STAGE_HEIGHT);
+            layout.setMinSize(App.STAGE_WIDTH, App.STAGE_HEIGHT);
 
-                StackPane layout = new StackPane(heart);
-                layout.setMaxSize(App.STAGE_WIDTH, App.STAGE_HEIGHT);
-                layout.setMinSize(App.STAGE_WIDTH, App.STAGE_HEIGHT);
-
-                Scene scene2 = new Scene(layout);
-                stage.setScene(scene2);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            Scene scene2 = new Scene(layout);
+            stage.setScene(scene2);
             this.stage.show();
         } else {
             createNextScene(newId);
         }
     }
 
-    private void animateUsingTimeline(ImageView heart, int newId) {
-            DoubleProperty scale = new SimpleDoubleProperty(1);
-            heart.scaleXProperty().bind(scale);
-            heart.scaleYProperty().bind(scale);
+    private void animateUsingTimeline(ImageView imageView, int newId) {
+        List<Image> images = new ArrayList<>();
+        try {
+            FileInputStream in1 = new FileInputStream("hatch/src/egg1.png");
+            FileInputStream in2 = new FileInputStream("hatch/src/egg2.png");
+            FileInputStream in3 = new FileInputStream("hatch/src/egg3.png");
+            FileInputStream in4 = new FileInputStream("hatch/src/egg4.png");
+            images.add(new Image(in1));
+            images.add(new Image(in2));
+            images.add(new Image(in3));
+            images.add(new Image(in4));
 
-            Timeline beat = new Timeline(
-                new KeyFrame(Duration.ZERO,         event -> scale.setValue(0.1)),
-                new KeyFrame(Duration.seconds(0.5), event -> scale.setValue(0.15)),
-                new KeyFrame(Duration.seconds(1), event -> scale.setValue(0.2)),
-                new KeyFrame(Duration.seconds(1.5), event -> scale.setValue(0.25)),
-                new KeyFrame(Duration.seconds(2), event -> scale.setValue(0.25))
+            Timeline time = new Timeline(
+                new KeyFrame(Duration.ZERO, e -> imageView.setImage(images.get(0))),
+                new KeyFrame(Duration.seconds(0.5), e -> imageView.setImage(images.get(1))),
+                new KeyFrame(Duration.seconds(1), e -> imageView.setImage(images.get(2))),
+                new KeyFrame(Duration.seconds(1.5), e -> imageView.setImage(images.get(3))),
+                new KeyFrame(Duration.seconds(2), e -> imageView.setImage(images.get(3)))
             );
-            beat.setCycleCount(1);
-            beat.setOnFinished(e -> createNextScene(newId));
-            beat.play();
+
+            time.setCycleCount(1);
+            time.setOnFinished(e -> createNextScene(newId));
+            time.play();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void createNextScene(int newId) {
@@ -259,15 +277,19 @@ public class GameScene {
         Canvas canvas = new Canvas(App.STAGE_WIDTH, App.STAGE_HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         try {
+            FileInputStream input3 = new FileInputStream("hatch/src/barometerLabels.png");
+            Image image3 = new Image(input3);
+            gc.drawImage(image3, 0, 0, App.STAGE_WIDTH, App.STAGE_HEIGHT);
+
             FileInputStream input1 = new FileInputStream(App.BAROM_FILES[0] + App.baromVals[0] + ".png");
             Image image1 = new Image(input1);
-            gc.drawImage(image1, App.BAROM_POS[0], App.BAROM_POS[1], App.BAROM_DIM[0], App.BAROM_DIM[1]);
+            gc.drawImage(image1, 0, 0, App.STAGE_WIDTH, App.STAGE_HEIGHT);
 
             FileInputStream input2 = new FileInputStream(App.BAROM_FILES[1] + App.baromVals[1] + ".png");
             Image image2 = new Image(input2);
-            gc.drawImage(image2, App.BAROM_POS[2], App.BAROM_POS[1], App.BAROM_DIM[0], App.BAROM_DIM[1]);
+            gc.drawImage(image2, 0, 0, App.STAGE_WIDTH, App.STAGE_HEIGHT);
         } catch(FileNotFoundException e) {
-            e.printStackTrace();
+            //do nothing
         }
         this.root.getChildren().add(canvas);
     }
@@ -285,7 +307,7 @@ public class GameScene {
                 input = new FileInputStream(App.THINK_BOX);
             }
             Image image = new Image(input);
-            gc.drawImage(image, App.BOX_X, App.BOX_Y, App.BOX_WIDTH, App.BOX_HEIGHT);
+            gc.drawImage(image, 0, 0, App.STAGE_WIDTH, App.STAGE_HEIGHT);
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -296,16 +318,53 @@ public class GameScene {
         Label label = new Label(this.text);
         Font font = App.loadFont(23);
         label.setFont(font);
+        label.setTextFill(Color.rgb(245, 243, 239));
         label.setWrapText(true);
         label.setMaxWidth(App.BOX_WIDTH - App.TEXT_OFFSET[0] * 2);
-        if (!speaking) {
-            label.setTranslateX(App.BOX_X + App.TEXT_OFFSET[0]);
-            label.setTranslateY(App.BOX_Y + App.TEXT_OFFSET[0]);
-        } else {
-            label.setTranslateX(App.BOX_X + App.TEXT_OFFSET[0]);
-            label.setTranslateY(App.BOX_Y + App.TEXT_OFFSET[1]);
-        }
+        label.setTranslateX(App.BOX_X + App.TEXT_OFFSET[0]);
+        label.setTranslateY(App.BOX_Y + App.TEXT_OFFSET[1]);
         this.root.getChildren().add(label);
     }
     
+    public void checkNewId(int newId) {
+        if (newId == 6) {
+            updateBV(10, -10);
+        } else if (newId == 8) {
+            updateBV(-10, 10);
+        } else if (newId == 20) {
+            updateBV(0, -10);
+        } else if (newId == 19) {
+            updateBV(0, -20);
+        } else if (newId == 27) {
+            updateBV(-10, 0);
+        } else if (newId == 28) {
+            updateBV(10, 0);
+        } else if (newId == 35) {
+            updateBV(-10, 10);
+        } else if (newId == 40) {
+            updateBV(10, -10);
+        } else if (newId == 36 && this.id == 38) {
+            updateBV(-10, 0);
+        } else if (newId == 47) {
+            updateBV(10, -10);
+        } else if (newId == 48) {
+            updateBV(-10, 10);
+        }
+    }
+
+    public void updateBV(int euph, int accept) {
+        App.baromVals[0] += euph;
+        App.baromVals[1] += accept;
+        if (App.baromVals[0] < 0) {
+            App.baromVals[0] = 0;
+        } else if (App.baromVals[0] > 90) {
+            App.baromVals[0] = 90;
+        }
+       if (App.baromVals[1] < 10) {
+            App.baromVals[1] = 10;
+        } else if (App.baromVals[1] > 100) {
+            App.baromVals[1] = 100;
+        }
+        System.out.println("Euph: " + App.baromVals[0] + " Accept: " + App.baromVals[1]);
+    }
 }
